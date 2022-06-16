@@ -8,7 +8,7 @@ def moste_intelligense(heroes):
     heroes_list = []
     for hero in heroes:
         response = requests.get(url + hero)
-        heroes_list.append(#тут код, который у героя из json  достате значение intelligence)
+        heroes_list.append()#тут в скобках, должен быть код, который у героя из json достает значение intelligence
     moste_intelligense_hero = max(heroes_list, key=lambda x: int(x[1]))
     print(f'Самый умный герой - {moste_intelligense_hero})
 
