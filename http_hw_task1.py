@@ -1,15 +1,19 @@
 # Работа с библиотекой requests, http-запросы
-# Задача 1
+# Задача 1 Кто самый умный супергерой?
+# Решение на основе https://akabab.github.io/superhero-api/api/
 
 import requests
 
-def moste_intelligense(heroes):
-    url = 'https://superheroapi.com/api/2619421814940190/search/'
+def most_intelligence_hero(heroes):
+    url = 'https://akabab.github.io/superhero-api/api/all.json'
     heroes_list = []
-    for hero in heroes:
-        response = requests.get(url + hero)
-        heroes_list.append()#тут в скобках, должен быть код, который у героя из json достает значение intelligence
+    response = requests.get(url)
+    for i in response.json():
+        if i['name'] in heroes:
+            heroes_list.append((i['name'], i['powerstats']['intelligence']))
     moste_intelligense_hero = max(heroes_list, key=lambda x: int(x[1]))
-    print(f'Самый умный герой - {moste_intelligense_hero})
+    print(f'Самый умный супергерой {moste_intelligense_hero[0]}, его intelligence = {moste_intelligense_hero[1]}')
 
-moste_intelligense(['Hulk', 'Captain America', 'Thanos'])
+most_intelligence_hero(['Hulk', 'Captain America', 'Thanos'])
+
+
